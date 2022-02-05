@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <div class="container-fluid">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+              <a class="nav-link text-white" routerLink="login" *ngIf="!servicethree.loggedIn()">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" routerLink="register" *ngIf="!servicethree.loggedIn()">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="events" >Events</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-white" routerLink="dashboard" *ngIf="servicethree.loggedIn()">Dashboard</a>
+                      </li>
+                      <li class="nav-item">
+                       <button class= "btn btn-primary text-white" (click)="logout()" *ngIf="servicethree.loggedIn()">Logout</button>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-white" routerLink="table" *ngIf="servicethree.loggedIn()">Table</a>
+
+                        </li>
+
+
+
+
+
+          </ul>
+  </div>
+</nav>
+
+    <router-outlet></router-outlet>
+
+

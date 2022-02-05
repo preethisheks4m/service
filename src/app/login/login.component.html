@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="py-5">
+        <div class="card col-md-6 ">
+          <div class="card-header bg-info ">
+            <h2>LOGIN PAGE</h2>
+          </div>
+  <div class="card-body">
+          <div class="row">
+            
+              <form [formGroup]="loginForm" class="form-container" (ngSubmit)="login()">
+                <div class="form-group mb-2">
+                  <label for="name">Email</label>
+                  <input type="text" class="form-control" placeholder="Enter name" formControlName="name" >
+                 
+                    <div *ngIf="name?.invalid && name?.touched" class="text-danger">
+                        <small *ngIf="name?.errors?.required">Email is required</small>
+                        <small *ngIf="name?.errors?.email">Enter valid email</small>
+
+                       </div>
+            
+                </div>
+  
+                <br>
+  
+  
+                <div class="form-group mb-2">
+                  <label for="Password">Password</label>
+                  <input
+                    type="password" class="form-control"  placeholder="Enter password" formControlName="email"
+                  />
+  
+                  <div *ngIf="email?.invalid && email?.touched" class="text-danger">
+                    <small *ngIf="email?.errors?.required">password is required</small>
+                        <small *ngIf="email?.errors?.email">Enter valid email</small>
+
+                   </div>
+                 
+                </div>
+               
+  
+                <div class="form-group  mb-2">
+                  <input type="submit" [disabled]=!loginForm.valid class="btn btn-info" value="Login"  />
+                  
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  

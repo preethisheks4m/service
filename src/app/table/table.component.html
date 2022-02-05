@@ -1,0 +1,89 @@
+<div>
+    <button type="button" class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#mydialog">Add user</button>
+
+</div>
+<table class="table ">
+
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">City</th>
+        <th scope="col">Company</th>
+
+     </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let data of tableData">
+        <td>{{data.name}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.address.city}}</td>
+        <td>{{data.company.name}}</td>
+
+
+
+    </tr>
+</tbody>
+</table>
+
+<div class="modal fade" id="mydialog" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle">Add User</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="tableForm" class="form-container" >
+                
+            
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Username</label>
+                        <input  type="text" [(ngModel)]=this.addUser.name class="form-control" placeholder="enter name" formControlName="userName" >
+                        <div *ngIf="userName?.errors && (userName?.touched || userName?.dirty)" class="text-danger">
+                            <small *ngIf="userName?.errors?.required">*required</small>
+                            <small *ngIf="userName?.errors?.minlength">Name should be 4 characters long</small>
+                            <small *ngIf="userName?.errors?.maxlength">Name should be within 15 characters long</small>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input  type="text" [(ngModel)]=this.addUser.email class="form-control" placeholder="enter email" formControlName="userEmail" >
+                        <div *ngIf="userEmail?.errors && (userEmail?.touched || userEmail?.dirty)" class="text-danger">
+                            <small *ngIf="userEmail?.errors?.required">*required</small>
+                            <small *ngIf="userEmail?.errors?.email">Enter valid email</small>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label">City</label>
+                        <input type="text" [(ngModel)]=this.addUser.city class="form-control" placeholder="enter city" formControlName="userCity">
+                        <div *ngIf="userCity?.errors && (userCity?.touched || userCity?.dirty)" class="text-danger">
+                            <small *ngIf="userCity?.errors?.required">*required</small>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="company" class="form-label">Company</label>
+                        <input  type="text" [(ngModel)]=this.addUser.company class="form-control" placeholder="enter company" formControlName="userCompany" >
+                        <div *ngIf="userCompany?.errors && (userCompany?.touched || userCompany?.dirty)" class="text-danger">
+                            <small *ngIf="userCompany?.errors?.required">*required</small>
+                        </div>
+                    </div>
+
+                    
+
+               
+                </form>
+            </div>
+                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary " data-bs-dismiss="modal">close</button>
+                <button type="button" (click)=" update()" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
